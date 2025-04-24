@@ -13,6 +13,7 @@ try:
     transcript_text = YouTubeTranscriptApi.get_transcript(video_id=video_id,languages=["en"])
     text = " ".join([i["text"] for i in transcript_text])
 except TranscriptsDisabled:
+    print("No caption avilable for this video")
 
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=1000,chunk_overlap=200
