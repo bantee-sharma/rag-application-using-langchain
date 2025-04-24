@@ -13,7 +13,7 @@ try:
     transcript_text = YouTubeTranscriptApi.get_transcript(video_id=video_id,languages=["en"])
     text = " ".join([i["text"] for i in transcript_text])
 except TranscriptsDisabled:
-    print("No caption avilable for this video")
+    print("No captions available for this video.")
 
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=1000,chunk_overlap=200
@@ -25,7 +25,7 @@ embeddings = HuggingFaceEmbeddings()
 
 vector_store = FAISS.from_documents(chunk,embedding=embeddings)
 
-retriever = vector_store.as_retriever(search_type="similarity", kwargs={"k":1})
+retriever = vector_store.as_retriever(search_type="similarity", kwargs={"k":4})
 
 res = retriever.invoke("What id deepmind?")
 
@@ -37,7 +37,15 @@ prompt = PromptTemplate(
     input_variables=["context","question"]
 )
 
-question = "Is there any topic disscused about aliens in this video"
+question = "Is there any topic disscused about aliens in this video, if yes then what was discussed"
 
-ret_docs = retriever.invoke(question)
-print(ret_docs)
+retriever_docs = retriever.invoke(question)
+
+cont = " ".join([i.page_content for i in retriever_docs])
+
+llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
+
+final_prompt = prompt.invoke({"context":cont, "question": question})
+
+answer = llm.invoke(final_prompt)
+print(answer.content)
