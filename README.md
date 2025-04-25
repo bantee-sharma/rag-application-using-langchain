@@ -21,7 +21,7 @@ It combines the power of LangChain, Google Generative AI (Gemini), and FAISS to 
 
 ❓ Custom prompt ensures the model only answers from available transcript context
 
-🛠️ Tech Stack
+**🛠️ Tech Stack**
 Python
 
 LangChain
