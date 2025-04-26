@@ -1,4 +1,4 @@
-from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
+from youtube_transcript_api import YouTubeTranscriptApi,YouTubeRequestFailed
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_core.prompts import PromptTemplate
 from langchain_community.vectorstores import FAISS
@@ -12,7 +12,7 @@ video_id = 'Gfr50f6ZBvo'
 try:
     transcript_text = YouTubeTranscriptApi.get_transcript(video_id=video_id,languages=["en"])
     text = " ".join([i["text"] for i in transcript_text])
-except TranscriptsDisabled:
+except YouTubeRequestFailed:
     print("No captions available for this video.")
 
 text_splitter = RecursiveCharacterTextSplitter(
@@ -49,3 +49,4 @@ final_prompt = prompt.invoke({"context":cont, "question": question})
 
 answer = llm.invoke(final_prompt)
 print(answer.content)
+
