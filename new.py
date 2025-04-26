@@ -1,4 +1,4 @@
-from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
+from youtube_transcript_api import YouTubeTranscriptApi, YouTubeRequestFailed
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -8,47 +8,49 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
+video_id = 'E3oG313_kps'
 
-video_id = "QbFA_4fDQ9k"
-
-#video_id = "Gfr50f6ZBvo&t=1s"
 try:
-    transcript = YouTubeTranscriptApi.get_transcript(video_id=video_id, languages=["hi"])
-    text = " ".join([i["text"] for i in transcript])
-except:
-    print("No captions available for this videos.")
+    transcript_text = YouTubeTranscriptApi.get_transcript(video_id=video_id,languages=['hi'])
+    text = " ".join([i["text"] for i in transcript_text])
+    
 
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size = 500, chunk_overlap=50
+except YouTubeRequestFailed:
+    print("No captions available for this video.")
+
+
+text_split = RecursiveCharacterTextSplitter(
+    chunk_size = 1000, chunk_overlap = 100
 )
 
-chunk = text_splitter.create_documents([text])
-embeddings = HuggingFaceEmbeddings()
+chunk = text_split.create_documents([text])
 
-vector_store = FAISS.from_documents(chunk,embeddings)
+embedd = HuggingFaceEmbeddings()
 
-retrieve = vector_store.as_retriever(search_type='similarity', kwargs={"k":2})
+vector_store = FAISS.from_documents(chunk,embedd)
+
+retriever = vector_store.as_retriever(search_type="similarity", kwargs={'k':3})
 
 prompt = PromptTemplate(
-    template="""You are a helpfull ai asistant. 
-    Give answer only from this transcript.
-    if context is insufficient, just say you don't know
+    template= '''You are a helpfull AI assistant.
+    Answer the question from the following context.
+    If context is insufficient just say, I don't know.
+    if anyone asked quesion in english then give answer in Englsih.
     {context}
-    Question: {question}""",
-    input_variables= ["context","question"]
-    )
+    Question : {question}''',
+    input_variables=["context","question"]
+)
 
-question = "Summarize this video in english."
+question = "Summary of this video"
 
-retrieve_doc = retrieve.invoke(question)
+retriever_docs = retriever.invoke(question)
 
+context = " ".join([i.page_content for i in retriever_docs])
 
-context = " ".join([i.page_content for i in retrieve_doc])
-
-llm = ChatGoogleGenerativeAI(model = "gemini-2.0-flash")
-
-final_prompt = prompt.invoke({"context": context, "question": question})
+final_prompt = prompt.invoke({"context":context, "question": question})
 
 res = llm.invoke(final_prompt)
+
 print(res.content)
