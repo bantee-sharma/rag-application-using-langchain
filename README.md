@@ -2,9 +2,13 @@
 ## 🎥 YouTube Transcript QA Bot — Ask Questions About Any Video! 🤖💬
 
 
-This project lets you ask questions about any YouTube video using its transcript! It combines the power of LangChain, Google Generative AI (Gemini), and FAISS to create a smart, context-aware assistant that can answer based on video content.
 
-🚀 Features
+This project lets you ask questions about any YouTube video using its transcript! 
+It combines the power of LangChain, Google Generative AI (Gemini), and FAISS to create a smart, context-aware assistant that can answer based on video content.
+
+
+**🚀 Features**
+
 📺 Automatically fetches English transcripts from YouTube videos
 
 🔗 Splits the transcript into manageable chunks using LangChain
@@ -17,7 +21,8 @@ This project lets you ask questions about any YouTube video using its transcript
 
 ❓ Custom prompt ensures the model only answers from available transcript context
 
-🛠️ Tech Stack
+**🛠️ Tech Stack**
+
 Python
 
 LangChain
