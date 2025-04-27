@@ -10,7 +10,6 @@ context-aware assistant that can answer based on video content.
 
 **🚀 Features**
 
-
 📺 Automatically fetches English transcripts from YouTube videos
 
 🔗 Splits the transcript into manageable chunks using LangChain
