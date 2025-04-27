@@ -9,6 +9,7 @@ It combines the power of LangChain, Google Generative AI (Gemini), and FAISS to 
 
 **🚀 Features**
 
+
 📺 Automatically fetches English transcripts from YouTube videos
 
 🔗 Splits the transcript into manageable chunks using LangChain
