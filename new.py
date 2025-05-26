@@ -1,4 +1,4 @@
-from youtube_transcript_api import YouTubeTranscriptApi, YouTubeRequestFailed
+from youtube_transcript_api import YouTubeTranscriptApi,TranscriptsDisabled
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -17,7 +17,7 @@ try:
     text = " ".join([i["text"] for i in transcript_text])
     
 
-except YouTubeRequestFailed:
+except TranscriptsDisabled:
     print("No captions available for this video.")
 
 
@@ -34,12 +34,13 @@ vector_store = FAISS.from_documents(chunk,embedd)
 retriever = vector_store.as_retriever(search_type="similarity", kwargs={'k':3})
 
 prompt = PromptTemplate(
-    template= '''You are a helpfull AI assistant.
-    Answer the question from the following context.
-    If context is insufficient just say, I don't know.
-    if anyone asked quesion in english then give answer in Englsih.
+    template= '''You are a helpful AI assistant.
+    Answer the question based on the following context.
+    If context is insufficient, just say, "I don't know."
+    if anyone ask the quesion in english, then answer in Englsih.
     {context}
-    Question : {question}''',
+    Question :
+    {question}''',
     input_variables=["context","question"]
 )
 
