@@ -6,5 +6,5 @@ load_dotenv()
 
 video_id = "E3oG313_kps"
 
-transcript_text = YouTubeTranscriptApi.get_transcript(video_id=video_id)
+transcript_text = YouTubeTranscriptApi.get_transcript(video_id=video_id,languages=("en"))
 print(transcript_text)
