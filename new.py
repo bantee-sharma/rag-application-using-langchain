@@ -4,7 +4,7 @@ from youtube_transcript_api import  YouTubeTranscriptApi, TranscriptsDisabled,No
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain_core.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate 
 
 load_dotenv()
 
@@ -40,8 +40,8 @@ vector_store = FAISS.from_documents(chunks,embedd)
 retriever = vector_store.as_retriever(search_type = "similarity",kwargs={"k":5})
 
 prompt = PromptTemplate(
-    prompt = PromptTemplate(
-    template='''You are a helpful AI assistant.
+
+template='''You are a helpful AI assistant.
 
 Answer the question based on the following context. Use only the information provided.  
 If the context is insufficient, respond with: "I don't know."
@@ -58,7 +58,7 @@ Question:
 Answer:''',
     input_variables=["context", "question"]
 )
-)
+
 
 
 
