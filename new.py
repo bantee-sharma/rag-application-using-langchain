@@ -8,7 +8,7 @@ video_id = "E3oG313_kps"
 
 try:
     transcript_text = YouTubeTranscriptApi.get_transcript(video_id=video_id,languages=["hi"])
-    text = "".join([i.text for i in transcript_text])
+    text = " ".join([i["text"] for i in transcript_text])
     print(text)
 
 except NoTranscriptFound:
