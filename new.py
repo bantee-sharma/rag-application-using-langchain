@@ -1,6 +1,6 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
-from youtube_transcript_api import  YouTubeTranscriptApi, TranscriptsDisabled,NoTranscriptFound
+from youtube_transcript_api import  YouTubeTranscriptApi, TranscriptsDisabled,NoTranscriptFound,VideoUnavailable
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -17,8 +17,19 @@ try:
     text = " ".join([i["text"] for i in transcript_text])
     
 
+except VideoUnavailable:
+    print("Video is unavailable.")
+    text = ""
+except TranscriptsDisabled:
+    print("Transcripts are disabled for this video.")
+    text = ""
 except NoTranscriptFound:
-    print("No Captions found for this video.")
+    print("No transcript found in the specified language.")
+    text = ""
+except Exception as e:
+    print(f"Unexpected error occurred: {e}")
+    text = ""
+
 
 text_spiltter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=100)
 chunks = text_spiltter.create_documents([text])
@@ -30,25 +41,26 @@ retriever = vector_store.as_retriever(search_type = "similarity",kwargs={"k":5})
 
 prompt = PromptTemplate(
     prompt = PromptTemplate(
-    template='''
-You are an intelligent assistant designed to answer questions based on the transcript of a YouTube video.
+    template='''You are a helpful AI assistant.
 
-Use only the information provided in the transcript context below to answer the user's question. Be concise, accurate, and informative.
+Answer the question based on the following context. Use only the information provided.  
+If the context is insufficient, respond with: "I don't know."
 
-If the information needed to answer the question is not present in the context, respond with:
-"Sorry, I couldn't find the answer to that question in the video transcript."
+If the question is asked in English, respond in English.  
+If it is in Hindi, respond in Hindi.
 
-Transcript Context:
+Context:
 {context}
 
-User Question:
+Question:
 {question}
 
 Answer:''',
     input_variables=["context", "question"]
 )
-
 )
+
+
 
 print("Knowledge Assistant ready! Type 'exit' to quit.")
 
