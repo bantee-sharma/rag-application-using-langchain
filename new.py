@@ -48,7 +48,7 @@ prompt = PromptTemplate(
     Answer: ''',
     input_variables=["context","question"])
     
-query = ""
+query = "What is loss function"
 retriev_docs = retriever.invoke(query)
 
 context = "".join([i.page_content for i in retriev_docs])
