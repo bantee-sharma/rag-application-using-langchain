@@ -11,7 +11,7 @@ transformers
 
 python-dotenv
 faiss-cpu
-
+pymupdf
 youtube-transcript-api
 torch
 streamlit
