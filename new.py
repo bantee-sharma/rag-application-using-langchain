@@ -18,7 +18,7 @@ def my_docs(folder_path):
             continue
 
         document = loader.load()
-        all_documents.append(document)
+        all_documents.extend(document)
     return all_documents
 
 docs = my_docs("docs")
