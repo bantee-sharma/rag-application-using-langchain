@@ -64,7 +64,7 @@ def weather(city:str)->str:
     "fetch the current weather"
     url = "https://api.weatherstack.com/current?access_key=2eab0e8b57aa4c3082a9f22e95baa467"
 
-    city_name = city
+    city_name = {"query":city}
     res = requests.get(url=url,params=city_name)
     return res.json()
 
