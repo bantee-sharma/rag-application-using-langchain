@@ -1,5 +1,6 @@
 from langchain_community.document_loaders import TextLoader,PyMuPDFLoader, UnstructuredWordDocumentLoader
 from pathlib import Path
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 
 
@@ -21,4 +22,8 @@ def my_docs(folder_path):
     return all_documents
 
 docs = my_docs("docs")
-print(docs)
+
+
+text_split = RecursiveCharacterTextSplitter(chunk_size = 1000, chunk_overlap = 100)
+chunks = text_split.split_documents(text_split)
+print(chunks)
