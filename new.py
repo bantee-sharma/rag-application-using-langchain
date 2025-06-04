@@ -6,6 +6,8 @@ from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
+from langchain.agents import tool,AgentExecutor,create_react_agent
+from langchain import hub
 
 load_dotenv()
 
@@ -39,7 +41,12 @@ db = FAISS.from_documents(chunks,embedd)
 
 retriever = db.as_retriever(search_type="similarity", kwargs={'k':3})
 
-prompt = PromptTemplate(
+@tool
+def doc_qa_tool(question:str)->str:
+    "Yor are a helpfull AI assistant. Answer the question from the following context."
+    retriev_docs = retriever.invoke(question)
+    context = "".join([i.page_content for i in retriev_docs])
+    qa_prompt = PromptTemplate(
     template='''Yor are a helpfull AI assistant. Answer the question from the following context.
     If the answer is not present in the context, respond with: "The answer is not available in the provided context.
             
@@ -47,14 +54,36 @@ prompt = PromptTemplate(
     Question:{question}
     Answer: ''',
     input_variables=["context","question"])
-    
-query = "What is loss function"
-retriev_docs = retriever.invoke(query)
+    final_prompt = qa_prompt.invoke({"context":context,"question":question})
+    response = llm.invoke(final_prompt)
+    return response.content
 
-context = "".join([i.page_content for i in retriev_docs])
+@tool
+def weather(city:str)->str:
+    "fetch the current weather"
+    return f"the weather of {city} is 25"
 
-final_prompt = prompt.invoke({"context":context,"question":query})
+prompt = hub.pull("hwchase17/react")
 
-response = llm.invoke(final_prompt)
-print(response)
+agent = create_react_agent(
+    llm = llm,
+    tools=[doc_qa_tool,weather],
+    prompt=prompt
+)
+
+agent_exe = AgentExecutor(
+    agent=agent,
+    tools=[doc_qa_tool,weather],
+    verbose=True
+)
+
+print("Hii, I am you personal assistant ask me anything!")
+while True:
+    question = input("Ask question: ").strip()
+    if question.lower() in ["exit","quit"]:
+        print("Byee")
+        break
+    else:
+        result = agent_exe.invoke({"input":question})
+        print("AI: ",result)
 
