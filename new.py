@@ -26,4 +26,4 @@ docs = my_docs("docs")
 
 text_split = RecursiveCharacterTextSplitter(chunk_size = 1000, chunk_overlap = 100)
 chunks = text_split.split_documents(docs)
-print(chunks)
+print(len(chunks))
