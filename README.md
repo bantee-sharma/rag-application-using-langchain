@@ -24,7 +24,7 @@ context-aware assistant that can answer based on video content.
 **🛠️ Tech Stack**
 **Python**
 
-LangChain
+**LangChain**
 
 FAISS (Vector Store)
 
