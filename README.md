@@ -28,7 +28,7 @@ context-aware assistant that can answer based on video content.
 
 **LangChain**
 
-FAISS (Vector Store)
+**FAISS (Vector Store)**
 
 Hugging Face Transformers (Embeddings)
 
