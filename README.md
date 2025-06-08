@@ -30,7 +30,7 @@ context-aware assistant that can answer based on video content.
 
 **FAISS (Vector Store)**
 
-Hugging Face Transformers (Embeddings)
+**Hugging Face Transformers (Embeddings)**
 
 Google Generative AI (Gemini)
 
