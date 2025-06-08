@@ -32,7 +32,7 @@ context-aware assistant that can answer based on video content.
 
 **Hugging Face Transformers (Embeddings)**
 
-Google Generative AI (Gemini)
+**Google Generative AI (Gemini)**
 
 YouTube Transcript API
 
