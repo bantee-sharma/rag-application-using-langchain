@@ -34,6 +34,6 @@ context-aware assistant that can answer based on video content.
 
 **Google Generative AI (Gemini)**
 
-YouTube Transcript API
+**YouTube Transcript API**
 
 
