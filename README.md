@@ -23,6 +23,7 @@ context-aware assistant that can answer based on video content.
 
 **🛠️ Tech Stack**
 
+
 **Python**
 
 **LangChain**
