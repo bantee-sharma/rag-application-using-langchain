@@ -22,6 +22,7 @@ context-aware assistant that can answer based on video content.
 ❓ Custom prompt ensures the model only answers from available transcript context
 
 **🛠️ Tech Stack**
+
 **Python**
 
 **LangChain**
