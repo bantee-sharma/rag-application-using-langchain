@@ -23,16 +23,17 @@ context-aware assistant that can answer based on video content.
 
 **🛠️ Tech Stack**
 
-Python
 
-LangChain
+**Python**
 
-FAISS (Vector Store)
+**LangChain**
 
-Hugging Face Transformers (Embeddings)
+**FAISS (Vector Store)**
 
-Google Generative AI (Gemini)
+**Hugging Face Transformers (Embeddings)**
 
-YouTube Transcript API
+**Google Generative AI (Gemini)**
+
+**YouTube Transcript API**
 
 
