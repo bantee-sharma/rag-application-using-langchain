@@ -4,6 +4,12 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import PromptTemplate
+from langchain_google_genai import ChatGoogleGenerativeAI
+from dotenv import load_dotenv
+
+load_dotenv()
+
+llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
 def my_docs(folder_path):
     all_docs = []
@@ -39,6 +45,10 @@ prompt = PromptTemplate(
     input_variables=["context","question"]
 )
 
-query = "What is sql?"
+query = "The Evolution of Football Tactics"
 context = retriever.invoke(query)
-print(context)
+
+final_prompt = prompt.invoke({"question":query,"context":context})
+
+res = llm.invoke(final_prompt)
+print(res)
