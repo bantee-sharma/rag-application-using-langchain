@@ -62,7 +62,7 @@ def doc_qa_tool(question:str)->str:
 def weather(city:str)-> str:
     "Fetch the Current weather of the city"
     url = "https://api.weatherstack.com/current?access_key=2eab0e8b57aa4c3082a9f22e95baa467"
-    city_srting = {"input":city}
+    city_srting = {"query":city}
     temp = requests.get(url=url,params=city_srting)
     return temp.json()
 
