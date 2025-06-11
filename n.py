@@ -12,7 +12,8 @@ def my_docs(folder_path):
         elif file.suffix == ".docx":
             loader = UnstructuredWordDocumentLoader(str(file))
         else:
-            return "No filefound"
+            print(f"Skipping unsupported file type: {file.name}")
+            continue
         
         document = loader.lazy_load()
         all_docs.extend(document)
