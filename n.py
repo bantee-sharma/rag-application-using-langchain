@@ -64,7 +64,7 @@ def weather(city:str)-> str:
     temp = requests.get(url=url,params=city_srting)
     return temp.json()
 
-prompt = hub.pull("rwchase17/react")
+prompt = hub.pull("hwchase17/react")
 
 agent = create_react_agent(
     llm=llm,
@@ -84,5 +84,5 @@ while True:
         print("Exiting...Bye....")
         break
     else:
-        response =age_exe.invoke(question)
+        response =age_exe.invoke({"input" :question})
         print("AI: ",response)
