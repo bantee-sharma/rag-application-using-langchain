@@ -1,4 +1,4 @@
-from langchain.document_loaders import PyMuPDFLoader,TextLoader, UnstructuredWordDocumentLoader
+from langchain_community.document_loaders import PyMuPDFLoader,TextLoader, UnstructuredWordDocumentLoader
 from pathlib import Path
 
 
