@@ -12,7 +12,10 @@ path = "docs\dl-curriculum.pdf"
 loader = PyMuPDFLoader(path)
 docs = loader.load()
 
-text = "".join([i.page_content for i in docs])
+splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+chunks = splitter.split_documents(docs)
+
+text = "".join([i.page_content for i in chunks])
 
 
 prompt = PromptTemplate(
