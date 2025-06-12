@@ -22,5 +22,3 @@ prompt = PromptTemplate(
 
 result = chunks | prompt | llm
 print(result)
-
-
