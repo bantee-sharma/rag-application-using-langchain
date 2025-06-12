@@ -12,13 +12,12 @@ path = "docs\dl-curriculum.pdf"
 loader = PyMuPDFLoader(path)
 docs = loader.load()
 
-splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-chunks = splitter.split_documents(docs)
-
 prompt = PromptTemplate(
     template="Summarize the following text: {text}",
     input_variables=["text"]
 )
 
-result = chunks | prompt | llm
-print(result)
+final = prompt.invoke(docs)
+res = llm.invoke(final)
+
+print(res)
