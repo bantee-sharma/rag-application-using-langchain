@@ -6,7 +6,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 load_dotenv()
 
-llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro-preview-06-05")
 
 path = "docs\dl-curriculum.pdf"
 loader = PyMuPDFLoader(path)
@@ -26,7 +26,7 @@ summaries = []
 for chunk in chunks:
     chunk_prompt = prompt.invoke({"text":chunk.page_content})
     response = llm.invoke(chunk_prompt)
-    summaries.append(response)
+    summaries.append(response.content)
 
 text = "\n".join(summaries)
 final_prompt = prompt.invoke({"text":text})
