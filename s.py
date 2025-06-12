@@ -20,4 +20,4 @@ prompt = PromptTemplate(
 final = prompt.invoke(docs)
 res = llm.invoke(final)
 
-print(res)
+print(res.content)
