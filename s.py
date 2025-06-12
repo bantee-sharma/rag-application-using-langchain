@@ -12,12 +12,15 @@ path = "docs\dl-curriculum.pdf"
 loader = PyMuPDFLoader(path)
 docs = loader.load()
 
+text = "".join([i.page_content for i in docs])
+
+
 prompt = PromptTemplate(
     template="Summarize the following text: {text}",
     input_variables=["text"]
 )
 
-final = prompt.invoke(docs)
+final = prompt.invoke(text)
 res = llm.invoke(final)
 
 print(res.content)
