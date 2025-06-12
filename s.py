@@ -15,15 +15,20 @@ docs = loader.load()
 splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 chunks = splitter.split_documents(docs)
 
-text = "".join([i.page_content for i in chunks])
-
-
 prompt = PromptTemplate(
     template="Summarize the following text: {text}",
     input_variables=["text"]
 )
 
-final = prompt.invoke({"text": text})
+summaries = []
+for chunk in chunks:
+    chunk_prompt = prompt.invoke({"text": chunk.page_content})
+    response = llm.invoke(chunk_prompt)
+    summaries.append(response.content)
+
+
+
+final = prompt.invoke({"text": summaries})
 res = llm.invoke(final)
 
 print(res.content)
