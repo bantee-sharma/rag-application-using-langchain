@@ -12,23 +12,24 @@ path = "docs\dl-curriculum.pdf"
 loader = PyMuPDFLoader(path)
 docs = loader.load()
 
+doc = " ".join([i.page_content for i in docs])
+
 splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 chunks = splitter.split_documents(docs)
 
 prompt = PromptTemplate(
-    template="Summarize the following text: {text}",
+    template="Summarize the followign context: {text}",
     input_variables=["text"]
 )
 
 summaries = []
 for chunk in chunks:
-    chunk_prompt = prompt.invoke({"text": chunk.page_content})
+    chunk_prompt = prompt.invoke({"text":chunk.page_content})
     response = llm.invoke(chunk_prompt)
-    summaries.append(response.content)
+    summaries.append(response)
 
+text = "\n".join(summaries)
+final_prompt = prompt.invoke({"text":text})
+result = llm.invoke(final_prompt)
 
-
-final = prompt.invoke({"text": summaries})
-res = llm.invoke(final)
-
-print(res.content)
+print(result.content)
