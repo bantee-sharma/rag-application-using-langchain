@@ -20,6 +20,7 @@ prompt = PromptTemplate(
     input_variables=["text"]
 )
 
-result = 
+result = chunks | prompt | llm
+print(result)
 
 
