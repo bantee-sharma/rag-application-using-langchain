@@ -20,7 +20,7 @@ prompt = PromptTemplate(
     input_variables=["text"]
 )
 
-final = prompt.invoke(text)
+final = prompt.invoke({"text": text})
 res = llm.invoke(final)
 
 print(res.content)
