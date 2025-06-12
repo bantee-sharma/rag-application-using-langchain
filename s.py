@@ -8,18 +8,18 @@ load_dotenv()
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
-def load_pdf(path):
-    loader = PyPDFLoader(path)
-    docs = loader.load()
-    return docs
 
-def split_docs(docs, chunk_size=1000, chunk_overlap=200):
-    splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
-    return splitter.split_documents(docs)
+loader = PyPDFLoader(path)
+docs = loader.load()
+
+splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+chunks = splitter.split_documents(docs)
 
 prompt = PromptTemplate(
     template="Summarize the following text: {text}",
     input_variables=["text"]
 )
+
+result = 
 
 
