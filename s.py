@@ -8,7 +8,7 @@ load_dotenv()
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
-
+path = "docs\dl-curriculum.pdf"
 loader = PyPDFLoader(path)
 docs = loader.load()
 
