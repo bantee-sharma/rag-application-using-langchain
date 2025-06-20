@@ -19,3 +19,5 @@ unstructured
 pytesseract 
 pdf2image
 pdfminer
+pi-heif
+unstructured_inference
