@@ -16,3 +16,5 @@ youtube-transcript-api
 torch
 streamlit
 unstructured
+pytesseract 
+pdf2image
