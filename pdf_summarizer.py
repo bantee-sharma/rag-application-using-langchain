@@ -6,10 +6,10 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 load_dotenv()
 
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro-preview-06-05")
+llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
-path = "docs/dl-curriculum.pdf"
-loader = UnstructuredPDFLoader(path)
+path = "docs\dl-curriculum.pdf"
+loader = PyMuPDFLoader(path)
 docs = loader.load()
 
 doc = " ".join([i.page_content for i in docs])
