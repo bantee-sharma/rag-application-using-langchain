@@ -8,8 +8,8 @@ load_dotenv()
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro-preview-06-05")
 
-path = "docs\dl-curriculum.pdf"
-loader = PyMuPDFLoader(path)
+path = "docs/dl-curriculum.pdf"
+loader = UnstructuredPDFLoader(path)
 docs = loader.load()
 
 doc = " ".join([i.page_content for i in docs])
@@ -18,9 +18,10 @@ splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 chunks = splitter.split_documents(docs)
 
 prompt = PromptTemplate(
-    template="Summarize the followign context: {text}",
+    template="Summarize the following context: {text}",
     input_variables=["text"]
 )
+
 
 summaries = []
 for chunk in chunks:
