@@ -23,5 +23,5 @@ prompt = PromptTemplate(
 
 chain = prompt | llm
 
-res = chain.invoke(text)
+res = chain.invoke({"text": text})
 print(res)
