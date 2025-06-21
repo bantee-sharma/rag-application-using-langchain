@@ -1,5 +1,4 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.document_loaders import PyMuPDFLoader
 from langchain_community.document_loaders import PyPDFLoader
 
 path = "docs\PA - Consolidated lecture notes.pdf"
