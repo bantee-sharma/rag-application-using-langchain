@@ -11,8 +11,7 @@ document = loader.load()
 text = "".join([i.page_content for i in document])
 print(text)
 
-'''text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=100)
-chunks = text_splitter.split_documents(document)
+
 
 load_dotenv()
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
@@ -22,14 +21,7 @@ prompt = PromptTemplate(
     input_variables=["text"]
 )
 
-summaries = []
-for chunk in chunks:
-    chunk_prompt = prompt.invoke({"text":chunk.page_content})
-    response = llm.invoke(chunk_prompt)
-    summaries.append(response.content)
+chain = prompt | llm
 
-text = "\n".join(summaries)
-final_prompt = prompt.invoke({"text":text})
-result = llm.invoke(final_prompt)
-
-print(result.content)'''
+res = chain.invoke(text)
+print(res)
