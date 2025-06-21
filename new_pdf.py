@@ -8,11 +8,14 @@ path = "docs\PA - Consolidated lecture notes.pdf"
 loader = PyMuPDFLoader(path)
 document = loader.load()
 
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=100)
+text = "".join([i.page_content for i in document])
+print(text)
+
+'''text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=100)
 chunks = text_splitter.split_documents(document)
 
 load_dotenv()
-llm = ChatGoogleGenerativeAI(model="google-2.0-flash")
+llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
 prompt = PromptTemplate(
     template="Summarize the following text: {text}",
@@ -29,4 +32,4 @@ text = "\n".join(summaries)
 final_prompt = prompt.invoke({"text":text})
 result = llm.invoke(final_prompt)
 
-print(result.content)
+print(result.content)'''
