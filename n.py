@@ -21,5 +21,13 @@ prompt = PromptTemplate(
 
 chain = prompt | llm
 
-res = chain.invoke({"text":text})
-print(res.content)
+chunks_summaries = []
+for chunk in chunks:
+    summary = chain.invoke({"text" :chunk.page_content})
+    chunks_summaries.append(summary)
+
+combined_summary_text = "\n".join(chunks_summaries)
+final_summary = chain.invoke({"text": combined_summary_text})
+
+# 6. Output the final summary
+print(final_summary.content)
