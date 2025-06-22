@@ -11,8 +11,7 @@ llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 loader = PyMuPDFLoader("docs\PA - Consolidated lecture notes.pdf")
 docs = loader.load()
 
-splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
-chunks = splitter.split_documents(docs)
+text = "\n".join([i.page_content for i in docs])
 
 prompt = PromptTemplate(
     template="Summarize the following text: {text}",
@@ -21,13 +20,6 @@ prompt = PromptTemplate(
 
 chain = prompt | llm
 
-chunks_summaries = []
-for chunk in chunks:
-    summary = chain.invoke({"text" :chunk.page_content})
-    chunks_summaries.append(summary)
+res = chain.invoke({"text":text})
+print(res.content)
 
-combined_summary_text = "\n".join(chunks_summaries)
-final_summary = chain.invoke({"text": combined_summary_text})
-
-# 6. Output the final summary
-print(final_summary.content)
