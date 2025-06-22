@@ -9,7 +9,7 @@ loader = PyMuPDFLoader(path)
 document = loader.load()
 
 text = "".join([i.page_content for i in document])
-print(text)
+print(len(text))
 
 
 
@@ -24,4 +24,4 @@ prompt = PromptTemplate(
 chain = prompt | llm
 
 res = chain.invoke({"text": text})
-print(res)
+#print(res)
