@@ -1,4 +1,4 @@
-from langchain_community.document_loaders import PyMuPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
@@ -17,7 +17,7 @@ except Exception as e:
     st.write("Please upload a pdf file")
 
 if file is not None:
-    loader = PyMuPDFLoader(file)
+    loader = PyPDFLoader(file)
     doc = loader.load()
 
     text = "\n".join([i.page_content for i in doc])
