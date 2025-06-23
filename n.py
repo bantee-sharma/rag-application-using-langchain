@@ -33,4 +33,7 @@ if file is not None:
     )
 
     chain = prompt | llm 
-    response = chain.invoke(text)
+
+    if st.button("Summarize"):
+        response = chain.invoke(text)
+        st.write(response.content)
