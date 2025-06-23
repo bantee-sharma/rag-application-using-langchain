@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 import streamlit as st
 import tempfile
 
-st.title("Pdf Summarizer")
-st.header("Save your time by converting long pdfs into summries")
+st.title("AI-Powered PDF Summarizer")
+st.header("Instantly Summarize Lengthy PDFs with the Power of Generative AI")
 
 load_dotenv()
 
