@@ -11,6 +11,8 @@ load_dotenv()
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
+file = st.file_uploader("Please upload your pdf", type=["pdf"])
+
 loader = PyMuPDFLoader("docs\PA - Consolidated lecture notes.pdf")
 doc = loader.load()
 
