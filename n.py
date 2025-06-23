@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import streamlit as st
 
 st.title("Pdf Summarizer")
+st.header("Save your time by converting long pdfs into summries")
 
 load_dotenv()
 
@@ -22,4 +23,3 @@ prompt = PromptTemplate(
 
 chain = prompt | llm 
 response = chain.invoke(text)
-print(response.content)
