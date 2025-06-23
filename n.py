@@ -13,15 +13,16 @@ llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
 file = st.file_uploader("Please upload your pdf", type=["pdf"])
 
-loader = PyMuPDFLoader("docs\PA - Consolidated lecture notes.pdf")
-doc = loader.load()
+if file is not None:
+    loader = PyMuPDFLoader(file)
+    doc = loader.load()
 
-text = "\n".join([i.page_content for i in doc])
+    text = "\n".join([i.page_content for i in doc])
 
-prompt = PromptTemplate(
-    template="You are Ai summarizer. Summarize the following text: \n {text}",
-    input_variables=["text"]
-)
+    prompt = PromptTemplate(
+        template="You are Ai summarizer. Summarize the following text: \n {text}",
+        input_variables=["text"]
+    )
 
-chain = prompt | llm 
-response = chain.invoke(text)
+    chain = prompt | llm 
+    response = chain.invoke(text)
