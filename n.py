@@ -3,6 +3,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
 import streamlit as st
+import tempfile
 
 st.title("Pdf Summarizer")
 st.header("Save your time by converting long pdfs into summries")
@@ -17,7 +18,11 @@ except Exception as e:
     st.write("Please upload a pdf file")
 
 if file is not None:
-    loader = PyPDFLoader(file)
+    with tempfile.NamedTemporaryFile(delete=False,suffix=".pdf") as tmp_file:
+        tmp_file.write(file.read())
+        tmp_file_path = tmp_file.name
+
+    loader = PyPDFLoader(tmp_file_path)
     doc = loader.load()
 
     text = "\n".join([i.page_content for i in doc])
