@@ -11,7 +11,10 @@ load_dotenv()
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
-file = st.file_uploader("Please upload your pdf", type=["pdf"])
+try:
+    file = st.file_uploader("Please upload your pdf", type=["pdf"])
+except Exception as e:
+    st.write("Please upload a pdf file")
 
 if file is not None:
     loader = PyMuPDFLoader(file)
