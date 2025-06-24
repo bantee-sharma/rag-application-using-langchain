@@ -30,10 +30,22 @@ if file_name is not None:
             input_variables=["text"]
         )
 
-        chain = prompt1|llm
+        prompt2 = PromptTemplate(
+            template="Answer the following question: {question} from the following text:{text}",
+            input_variables=["question","text"]
+        )
 
+        chain = prompt1|llm
+        chain2 = prompt2|llm
         if st.button("Summarize"):
             response = chain.invoke(text)
             st.write(response.content)
+
+        question = st.text_input()
+        if st.button("Submit"):
+            response = chain2.invoke(question)
+            st.write(response.content
+                     )
+
 
 
