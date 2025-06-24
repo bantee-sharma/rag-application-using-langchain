@@ -44,7 +44,7 @@ if file_name is not None:
         question = st.text_input("Ask any Question About Pdf")
         if st.button("Submit"):
             
-            response = chain2.invoke(question)
+            response = chain2.invoke({"question":question,"text":text})
             st.write(response.content)
 
 
