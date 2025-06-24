@@ -12,3 +12,4 @@ load_dotenv()
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
+file_name = st.file_uploader("Upload your pdf", type=["pdf"])
