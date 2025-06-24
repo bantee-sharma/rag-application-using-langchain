@@ -13,3 +13,23 @@ load_dotenv()
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
 file_name = st.file_uploader("Upload your pdf", type=["pdf"])
+
+
+if file_name is not None:
+    with tempfile.NamedTemporaryFile(suffix=".pdf",delete=False) as tmp_file:
+        tmp_file.write(file_name.read())
+        file_path = tmp_file.name
+
+        loader = PyPDFLoader(file_path)
+        docs = loader.load()
+
+        text = "".join([i.page_content for i in docs])
+
+        prompt1 = PromptTemplate(
+            template="Summarize the following text:{text}",
+            input_variables=["text"]
+        )
+
+        
+
+
