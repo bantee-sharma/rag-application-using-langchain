@@ -23,13 +23,17 @@ if file_name is not None:
         loader = PyPDFLoader(file_path)
         docs = loader.load()
 
-        text = "".join([i.page_content for i in docs])
+        text = "\n".join([i.page_content for i in docs])
 
         prompt1 = PromptTemplate(
             template="Summarize the following text:{text}",
             input_variables=["text"]
         )
 
-        
+        chain = prompt1|llm
+
+        if st.button("Summarize"):
+            response = chain.invoke(text)
+            st.write(response.content)
 
 
