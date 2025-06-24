@@ -14,7 +14,6 @@ llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
 file_name = st.file_uploader("Upload your pdf", type=["pdf"])
 
-question = st.text_input()
 
 if file_name is not None:
     with tempfile.NamedTemporaryFile(suffix=".pdf",delete=False) as tmp_file:
@@ -44,7 +43,7 @@ if file_name is not None:
 
         
         if st.button("Submit"):
-            
+            question = st.text_input()
             response = chain2.invoke(question)
             st.write(response.content)
 
