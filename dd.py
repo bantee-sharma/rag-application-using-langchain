@@ -37,6 +37,8 @@ if file is not None:
             res = chain1.invoke({"text":text})        
             st.write(res.content)
 
+
+        question = st.text_input("Enter your question")
         if st.button("Summarize"):
             res = chain2.invoke({"question":question ,"text":text})        
             st.write(res.content)
