@@ -50,4 +50,5 @@ if file is not None:
         st.write(res.content)
 
 st.markdown("___")
-st.markdown("***Created by Bantee Sharma***")
+st.markdown("___")
+st.markdown("***Created by Bantee Sharma — [Connect on LinkedIn](https://www.linkedin.com/in/bantee-sharma/)***")
