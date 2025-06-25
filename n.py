@@ -27,13 +27,27 @@ if file is not None:
 
     text = "\n".join([i.page_content for i in doc])
 
-    prompt = PromptTemplate(
+    prompt1 = PromptTemplate(
         template="You are Ai summarizer. Summarize the following text: \n {text}",
         input_variables=["text"]
     )
 
-    chain = prompt | llm 
+    prompt2 = PromptTemplate(
+            template="Answer the following question:{question} from the following text:{text}",
+            input_variables=["question","text"]
+        )
+
+    chain1 = prompt1|llm
+    chain2 = prompt2|llm
 
     if st.button("Summarize"):
-        response = chain.invoke(text)
-        st.write(response.content)
+        res = chain1.invoke({"text":text})
+        st.write(res.content)
+        
+    question = st.text_input("Ask Your Question")
+    if st.button("Answer"):
+        res = chain2.invoke({"question":question,"text":text})
+        st.write(res.content)
+
+st.markdown("___")
+st.markdown("***Created by Bantee Sharma***")
