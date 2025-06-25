@@ -43,3 +43,5 @@ if file is not None:
             res = chain2.invoke({"question":question ,"text":text})        
             st.write(res.content)
         
+
+st.markdown("---")
