@@ -49,6 +49,6 @@ if file is not None:
         res = chain2.invoke({"question":question,"text":text})
         st.write(res.content)
 
-st.markdown("___")
+
 st.markdown("___")
 st.markdown("**Created by [Bantee Sharma](https://www.linkedin.com/in/bantee-sharma/)**")
