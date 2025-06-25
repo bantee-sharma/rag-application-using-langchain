@@ -33,7 +33,7 @@ if file is not None:
     )
 
     prompt2 = PromptTemplate(
-            template="Answer the following question:{question} from the following text:{text}",
+            template="Answer the following question:\n{question} from the following text:\n{text}",
             input_variables=["question","text"]
         )
 
