@@ -1,1 +1,4 @@
-from langchain_community.document_loaders import PyPDFLoader
+import fitz
+
+docs = fitz.open("docs/dl-curriculum.pdf")
+print(len(docs))
