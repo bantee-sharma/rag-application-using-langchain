@@ -51,4 +51,4 @@ if file is not None:
 
 
 st.markdown("___")
-st.markdown("**Created by [Bantee Sharma](https://www.linkedin.com/in/bantee-sharma-9a970b26b/)**")
+st.markdown("**Created by [Akash Sharma](https://www.linkedin.com/in/akash-sharma-b049031a5/)**")
