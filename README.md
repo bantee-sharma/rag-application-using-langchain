@@ -1,5 +1,5 @@
 
-## 🎥 YouTube Transcript QA Bot — Ask Questions About Any Video! 🤖💬
+## 1. 🎥 YouTube Transcript QA Bot — Ask Questions About Any Video! 🤖💬
 
 
 This project lets you ask questions about any YouTube video using its transcript! 
