@@ -9,4 +9,6 @@ llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
 loader = PyPDFLoader("docs/dl-curriculum.pdf")
 doc = loader.load()
-print(len(doc))
+
+text = " ".join([i.page_content for i in doc])
+print(text)
