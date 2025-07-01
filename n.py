@@ -45,7 +45,7 @@ if st.button("Summarize"):
 
 
 question = st.text_input("Ask any question:")
-if st.button("Summarize"):
+if st.button("Submit"):
 
     res = chain2.invoke({"question":question ,"text":text})
     st.write(res.content)
