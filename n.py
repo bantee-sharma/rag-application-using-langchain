@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_core.prompts import PromptTemplate
 import streamlit as st
+import tempfile
 
 
 st.title("AI summarizer")
@@ -15,8 +16,11 @@ llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 file_upload = st.file_uploader("Upload your file",type=[".pdf"])
 
 if file_upload is not None:
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
+        tmp_file.write(file_upload.read())
+        file_name = tmp_file.name
 
-    loader = PyPDFLoader("docs/dl-curriculum.pdf")
+    loader = PyPDFLoader(file_name)
     doc = loader.load()
 
     text = "\n".join([i.page_content for i in doc])
