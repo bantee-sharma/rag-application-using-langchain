@@ -38,14 +38,21 @@ prompt2 = PromptTemplate(
 chain1 = prompt1 | llm
 chain2 = prompt2 | llm
 
-if st.button("Summarize"):
 
-    res = chain1.invoke({"text":text})
-    st.write(res.content)
+try:
+    if st.button("Summarize"):
+
+        res = chain1.invoke({"text":text})
+        st.write(res.content)
+except Exception as e:
+    st.write("Please upload your file")
 
 
-question = st.text_input("Ask any question:")
-if st.button("Submit"):
+try:
+    question = st.text_input("Ask any question:")
+    if st.button("Submit"):
 
-    res = chain2.invoke({"question":question ,"text":text})
-    st.write(res.content)
+        res = chain2.invoke({"question":question ,"text":text})
+        st.write(res.content)
+except Exception as e:
+    st.write("Please upload your file")
