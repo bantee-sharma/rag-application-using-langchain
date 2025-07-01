@@ -30,10 +30,22 @@ prompt1 = PromptTemplate(
     input_variables=["text"]
 )
 
-chain = prompt1 | llm
+prompt2 = PromptTemplate(
+    template="You are an helpfull AI assistant. Answer the question: {question} from following text :\n {text}",
+    input_variables=["question","text"]
+)
 
+chain1 = prompt1 | llm
+chain2 = prompt2 | llm
 
 if st.button("Summarize"):
 
-    res = chain.invoke({"text":text})
+    res = chain1.invoke({"text":text})
+    st.write(res.content)
+
+
+question = st.text_input("Ask any question:")
+if st.button("Summarize"):
+
+    res = chain2.invoke({"question":question ,"text":text})
     st.write(res.content)
