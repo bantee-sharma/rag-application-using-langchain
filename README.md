@@ -44,7 +44,7 @@ Instantly Summarize & Question PDFs Using Generative AI
 
 This project is a Streamlit web app that uses Google’s Gemini 2.0 Flash model to quickly summarize long PDF documents and answer custom user questions based on their content. Whether you're reading research papers, reports, or manuals — this tool gives you instant insights with the power of LLMs.
 
-✅ Features
+**✅ Features**
 
 📥 Upload PDFs directly in the browser
 
