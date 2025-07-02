@@ -63,7 +63,7 @@ This project is a Streamlit web app that uses Google’s Gemini 2.0 Flash model 
 
 - Google Generative AI (Gemini 2.0 Flash) – For LLM-based summarization and Q&A
 
-Streamlit – Frontend for interactive UI
+- Streamlit – Frontend for interactive UI
 
 PyPDFLoader – Load and parse PDF files
 
