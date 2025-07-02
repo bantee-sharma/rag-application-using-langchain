@@ -61,7 +61,7 @@ This project is a Streamlit web app that uses Google’s Gemini 2.0 Flash model 
 
 - LangChain – Prompt management and chaining
 
-Google Generative AI (Gemini 2.0 Flash) – For LLM-based summarization and Q&A
+- Google Generative AI (Gemini 2.0 Flash) – For LLM-based summarization and Q&A
 
 Streamlit – Frontend for interactive UI
 
