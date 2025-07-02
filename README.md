@@ -50,7 +50,7 @@ This project is a Streamlit web app that uses Google’s Gemini 2.0 Flash model 
 
 - 📚 Automatic summarization of large documents
 
-❓ Ask custom questions based on the PDF content
+- ❓ Ask custom questions based on the PDF content
 
 ⚡ Powered by Gemini 2.0 Flash for blazing-fast, high-quality answers
 
