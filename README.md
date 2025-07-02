@@ -52,7 +52,7 @@ This project is a Streamlit web app that uses Google’s Gemini 2.0 Flash model 
 
 - ❓ Ask custom questions based on the PDF content
 
-⚡ Powered by Gemini 2.0 Flash for blazing-fast, high-quality answers
+- ⚡ Powered by Gemini 2.0 Flash for blazing-fast, high-quality answers
 
 🖥️ Clean, user-friendly interface built with Streamlit
 
