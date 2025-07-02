@@ -48,7 +48,7 @@ This project is a Streamlit web app that uses Google’s Gemini 2.0 Flash model 
 
 - 📥 Upload PDFs directly in the browser
 
-📚 Automatic summarization of large documents
+- 📚 Automatic summarization of large documents
 
 ❓ Ask custom questions based on the PDF content
 
