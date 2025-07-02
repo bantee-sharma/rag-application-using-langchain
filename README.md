@@ -54,7 +54,7 @@ This project is a Streamlit web app that uses Google’s Gemini 2.0 Flash model 
 
 - ⚡ Powered by Gemini 2.0 Flash for blazing-fast, high-quality answers
 
-🖥️ Clean, user-friendly interface built with Streamlit
+- 🖥️ Clean, user-friendly interface built with Streamlit
 
 
 **🧠 Tech Stack**
