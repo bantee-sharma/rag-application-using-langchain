@@ -65,6 +65,6 @@ This project is a Streamlit web app that uses Google’s Gemini 2.0 Flash model 
 
 - Streamlit – Frontend for interactive UI
 
-PyPDFLoader – Load and parse PDF files
+- PyPDFLoader – Load and parse PDF files
 
 dotenv – Secure API key management
