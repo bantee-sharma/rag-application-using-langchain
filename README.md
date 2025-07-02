@@ -57,7 +57,7 @@ This project is a Streamlit web app that uses Google’s Gemini 2.0 Flash model 
 🖥️ Clean, user-friendly interface built with Streamlit
 
 
-🧠 Tech Stack
+**🧠 Tech Stack**
 
 LangChain – Prompt management and chaining
 
