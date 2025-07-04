@@ -5,4 +5,8 @@ d = [
     "price":[100, 200, 300]}
 ]
 
-print(sum([i["price"] for i in d]))
+import pandas as pd
+
+df = pd.DataFrame(d)
+
+print(df)
