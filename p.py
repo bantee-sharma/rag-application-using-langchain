@@ -5,7 +5,4 @@ d = [
     "price":[100, 200, 300]}
 ]
 
-s = 0
-for i in d:
-    s = s + i["price"]
-    print(s)
+print(sum([i["price"] for i in d]))
