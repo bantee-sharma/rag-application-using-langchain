@@ -9,9 +9,10 @@ def func(n):
     seen = []
     s = set()
     for i in n:
-        if i not in s:
+        if i not in seen:
             seen.append(i)
         else:    
             s.add(i)
-    return s
+    return list(s)
+
 print(func(n))
