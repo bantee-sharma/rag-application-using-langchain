@@ -1,14 +1,15 @@
 
 
 
-s = ["words","python","java","c++","javascript","ruby","php","swift","kotlin","typescript"]
 
 
-def func(s):
-    new = []
-    for i in s:
-        if len(i) == len(set(i)):
-            new.append(i)
-    return new
+n = [1,2,3,4,1,2,5,6,3,8,3,6]
 
-print(func(s))
+def func(n):
+    s = set()
+    for i in n:
+        if i in s:
+            s
+    return list(s)
+
+print(func(n))
