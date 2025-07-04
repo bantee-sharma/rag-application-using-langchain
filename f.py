@@ -1,8 +1,9 @@
 import fitz
 
-file = fitz.open("docs\PA - Consolidated lecture notes.pdf")
+file = fitz.open("docs/dl-curriculum.pdf")
 
-for page_num in range(len(file)):
-    page = file.load_page(page_num)
+
+for page_no in range(len(file)):
+    page = file.load_page(page_no)
     text = page.get_text()
-    print(f"Page No.-{page_num+1}\n {"_"*30} \n {text}")
+    print(f"Page no: {page_no} \n\ {"-"*30} \n\ {text}")
