@@ -13,3 +13,5 @@ def func(city:str)->bool:
     bool: True if the city is 'New York', False otherwise.
     """
     return city == 'New York'
+
+print(func('New York'))  # Expected output: True
