@@ -11,10 +11,20 @@
 
 
 
+# class Student:
+#     def func(self,name,place):
+#         self.name = name
+#         self.place = place
+
+# s = Student()
+# print(s.func("Bantee","jewar"))
+
+
+
 class Student:
-    def func(self,name,place):
-        self.name = name
-        self.place = place
+    @staticmethod
+    def func(name,place):
+        return name,place
 
 s = Student()
 print(s.func("Bantee","jewar"))
