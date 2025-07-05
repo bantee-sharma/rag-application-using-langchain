@@ -6,16 +6,14 @@ class Student:
         self.place = place
 
 s = Student("Bantee","Jewar")
-print(s.name)
-print(s.place)
 
 class School(Student):
     def __init__(self, scl_name):
         self.scl_name = scl_name
 
-scl = School()
-
-print(scl.name)
+scl = School("SVM")
+print(scl.scl_name)
+print(s.name)
 
 
 
