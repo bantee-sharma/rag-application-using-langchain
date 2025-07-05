@@ -17,4 +17,4 @@ class Student:
         self.place = place
 
 s = Student()
-print(s.func("Bantee"))
+print(s.func("Bantee","jewar"))
