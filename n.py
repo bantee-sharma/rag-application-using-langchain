@@ -1,8 +1,9 @@
 
 
 class Car:
-    @staticmethod
-    def func(a,b):
+    def func(self,a,b):
+        a = self.a
+        b = self.b
         return a*b
     
 c = Car()
