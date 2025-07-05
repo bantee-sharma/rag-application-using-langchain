@@ -10,10 +10,20 @@
 # print(c)
 
 
+# class Car:
+#     def func(self,a,b):
+#         self.a = a
+#         self.b = b
+#         return a*b
+    
+# c = Car()
+# print(c.func(5,5))
+
+
+
 class Car:
-    def func(self,a,b):
-        self.a = a
-        self.b = b
+    @staticmethod
+    def func(a,b):
         return a*b
     
 c = Car()
