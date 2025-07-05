@@ -1,30 +1,10 @@
 
 
-# class Car:
-#     def __init__(self,a,b):
-#         self.a = a
-#         self.b = b
-#         return a*b
-    
-# c = Car(5,5)
-# print(c)
-
-
-# class Car:
-#     def func(self,a,b):
-#         self.a = a
-#         self.b = b
-#         return a*b
-    
-# c = Car()
-# print(c.func(5,5))
-
-
-
 class Car:
-    @staticmethod
-    def func(a,b):
-        return a*b
+    def __init__(self,a,b):
+        self.a = a
+        self.b = b
     
-c = Car()
-print(c.func(5,5))
+c = Car(5,5)
+print(c.a*c.b)
+
