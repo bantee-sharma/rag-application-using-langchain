@@ -1,6 +1,7 @@
 
 
 class Car:
+    @staticmethod
     def func(a,b):
         return a*b
     
