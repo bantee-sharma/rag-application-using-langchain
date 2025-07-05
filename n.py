@@ -16,6 +16,5 @@ class Student:
         self.name = name
         self.place = place
 
-s = Student("Bantee","Jewar")
-print(s.name)
-print(s.place)
+s = Student()
+print(s.func("Bantee"))
