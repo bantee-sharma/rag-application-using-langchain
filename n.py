@@ -1,10 +1,21 @@
 
 
-class Car:
-    def __init__(self,a,b):
-        self.a = a
-        self.b = b
-    
-c = Car(5,5)
-print(c.a*c.b)
+# class Student:
+#     def __init__(self,name,place):
+#         self.name = name
+#         self.place = place
 
+# s = Student("Bantee","Jewar")
+# print(s.name)
+# print(s.place)
+
+
+
+class Student:
+    def func(self,name,place):
+        self.name = name
+        self.place = place
+
+s = Student("Bantee","Jewar")
+print(s.name)
+print(s.place)
