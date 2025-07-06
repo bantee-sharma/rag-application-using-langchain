@@ -1,5 +1,9 @@
 import fitz
 
 docs = fitz.open("docs\dl-curriculum.pdf")
-page = docs[0].get_text()
-print(page)
+
+for page_no in range(len(docs)):
+    page = docs.load_page(page_no)
+    text = page.get_text()
+
+    print(text)
