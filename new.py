@@ -3,10 +3,10 @@ from youtube_transcript_api import YouTubeTranscriptApi,TranscriptsDisabled, NoT
 
 
 
-video_id = ""
+video_id = "MdeQMVBuGgY"
 
 try:
-    transcript = YouTubeTranscriptApi.get_transcript(video_id=video_id, languages=["en"])
+    transcript = YouTubeTranscriptApi.get_transcript(video_id=video_id, languages=["en","hi"])
     print(transcript)
 
 except TranscriptsDisabled:
