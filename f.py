@@ -12,7 +12,7 @@ for page_no in range(len(docs)):
 
     # print(f"page_no.-{page_no} \n {"-"*30} \n {text}")
     image_list = page.get_images(full=True)
-    for image_index,img in enumerate(image_list):
+    for img_index,img in enumerate(image_list):
         xref = img[0]
         base_image = docs.extract_image(xref)
         image_bytes = base_image["image"]
