@@ -21,3 +21,6 @@ pdf2image
 pdfminer
 pi-heif
 unstructured_inference
+pymupdf 
+pytesseract 
+pillow
