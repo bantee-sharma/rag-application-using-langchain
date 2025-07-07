@@ -1,9 +1,11 @@
 from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, NoTranscriptFound, VideoUnavailable
 
-video_id = 'E3oG313_kps'
+video_id = 'MdeQMVBuGgY'
 
 try:
-    transcript_text = YouTubeTranscriptApi.get_transcript(video_id, languages=['hi'])
+    transcript_text = YouTubeTranscriptApi.get_transcript(video_id, languages=['hi',"en"])
+    text = "".join([i["text"] for i in transcript_text])
+    print(text)
 except TranscriptsDisabled:
     print("❌ Transcripts are disabled for this video.")
 except NoTranscriptFound:
