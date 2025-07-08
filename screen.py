@@ -18,4 +18,9 @@ def func(n):
         return 1
     else:
         return n*func(n-1)
-print(func(10))
+# print(func(10))
+
+
+def func(s):
+    return s[::-1]
+print(func("bantee"))
