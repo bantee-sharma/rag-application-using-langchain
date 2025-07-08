@@ -1,26 +1,14 @@
-# # n = int(input("enter your input: "))
-# def is_prime(n):
-#     if n<1:
-#         return False
-#     else:
-#         for i in range(2,int(n**0.5)+1):
-#             if n%i == 0:
-#                 return False
-#     return True
+import pandas as pd
+import numpy as np
 
-# lst = [1,2,3,4,5,6,7,8,9,10,11]
-# def prime(lst):
-#     return [i for i in lst if is_prime(i)]
-# print(prime(lst))
+df = pd.DataFrame({
+    "name": ["bantee", "sharma", "akash", "bob", "alice"],
+    "place": ["Delhi", "Mumbai", "Chennai", "Kolkata", "Bangalore"],
+    "salary": [50000, 60000, 55000, 70000, 65000],
+    "date": ["2023-01-10", "2023-02-15", "2023-03-20", "2023-04-25", "2023-05-30"],
+    "department": ["HR", "Finance", "IT", "Marketing", "Sales"],
+    "age": [28, 32, 25, 29, 31],
+    "experience_years": [3, 7, 2, 5, 6]
+})
 
-def func(n):
-    if n == 1 or n == 0:
-        return 1
-    else:
-        return n*func(n-1)
-# print(func(10))
-
-
-def func(s):
-    return s[::-1]
-print(func("bantee"))
+print(df)
