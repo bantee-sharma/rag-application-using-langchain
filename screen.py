@@ -11,3 +11,4 @@ def is_prime(n):
 lst = [1,2,3,4,5,6,7,8,9,10,11]
 def prime(lst):
     return [i for i in lst if is_prime(i)]
+print(prime(lst))
