@@ -2,6 +2,6 @@
 
 
 with open("docs\dl-curriculum.pdf","wb") as f:
-    file =  f.read()
+    file =  f.writable()
 
 print(file)
