@@ -2,6 +2,6 @@
 
 
 with open("docs\dl-curriculum.pdf","r") as f:
-    file =  f.read()
+    file =  f.readline()
 
 print(file)
